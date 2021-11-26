@@ -1,13 +1,17 @@
 export interface ICrypto {
     name?: string,
-    toUSD: number | string,
-    toEUR: number | string,
-    toUAH: number | string,
+    USD: number | string,
+    EUR: number | string,
+    UAH: number | string,
     icon: string,
 }
 export interface IAction {
     type: string,
     payload? : string | object,
+}
+export interface IActionObj {
+    type: string,
+    payload: object
 }
 
 export interface IState {

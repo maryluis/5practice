@@ -3,7 +3,7 @@ import { IAction } from '../interfaces';
 
 export function cryptoNames(state:object, action:IAction) {
   if (state === undefined) {
-    return { actualCryptoName: 'BTH' };
+    return { actualCryptoName: 'BTC' };
   }
   switch (action.type) {
     case CHANGE_CRYPTO_NAME: return {

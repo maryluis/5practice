@@ -28,16 +28,20 @@
 .list-inner {
   position: relative;
   top:30px;
+  right: 15px;
 }
 .list-inner li {
   padding: 0px 15px;
-  width: 130px;
+  width: 140px;
+  position: relative;
   display: flex;
   justify-content: space-between;
 }
 .text-start {
   text-align: left;
-  width: 60px;
+  position: absolute;
+  width: 100px;
+  left: 60px;
 }
 .card img {
   position: relative;
@@ -83,6 +87,10 @@
   left: 20px;
   color:#198754
 }
+.loader {
+  width: 100px;
+  height: 100px;
+}
 /* .input-inner {
   display: flex;
   justify-content: center;
@@ -92,5 +100,11 @@
     display: flex;
     width: 300px;
     flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 575px) {
+  .input-wrapper label {
+    display: none;
+    visibility: hidden;
   }
 }

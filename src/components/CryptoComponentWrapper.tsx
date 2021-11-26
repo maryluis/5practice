@@ -1,43 +1,33 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
+import { Spinner } from 'reactstrap';
 import { ICrypto } from '../interfaces';
+import { actionGetData } from '../redux-saga/actionCreators';
 import { CryptoCard } from './CryptoCard';
 
 export function CryptoWrapper() {
-  const data:Array<ICrypto> = [
-    {
-      name: 'BTC',
-      toUAH: 150000,
-      toEUR: 5000,
-      toUSD: 6800,
-      icon: 'https://gitlab.com/copeus/learning/-/raw/master/tasks/react/assets/task2/icons/BTC.png',
-    },
-    {
-      name: 'ETH',
-      toUAH: 7400,
-      toEUR: 180,
-      toUSD: 250,
-      icon: 'https://gitlab.com/copeus/learning/-/raw/master/tasks/react/assets/task2/icons/ETH.png',
-    },
-    {
-      name: 'XPR',
-      toUAH: 7.0231,
-      toEUR: 0.1550,
-      toUSD: 0.2500,
-      icon: 'https://gitlab.com/copeus/learning/-/raw/master/tasks/react/assets/task2/icons/XRP.png',
-    }];
+  const data:Array<ICrypto | any> = useSelector((state: RootStateOrAny) => {
+    return state.actualData.dataInterface;
+  });
+  const dispatch = useDispatch();
+  useEffect(():any => dispatch(actionGetData()), []);
+  const isLoading = useSelector((state: RootStateOrAny) => {
+    return state.actualData.loading;
+  });
   return (
     <div className="flex-row card-inner">
-      {data.map(({
-        name, toUSD, toEUR, toUAH, icon,
+      {!isLoading ? data.map(({
+        name, USD, EUR, UAH, icon,
       }) => (
         <CryptoCard
           key={name}
-          toUSD={toUSD}
-          toEUR={toEUR}
-          toUAH={toUAH}
+          USD={USD}
+          EUR={EUR}
+          UAH={UAH}
           icon={icon}
           name={name}
         />
-      ))}
+      )) : <Spinner className="loader" type="grow" />}
     </div>
   );
 }

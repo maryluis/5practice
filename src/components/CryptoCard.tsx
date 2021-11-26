@@ -5,7 +5,7 @@ import { ICrypto } from '../interfaces';
 import { actionChangeCrypto } from '../redux-saga/actionCreators';
 
 export function CryptoCard({
-  icon, toUSD, toUAH, toEUR, name = '',
+  icon, USD, UAH, EUR, name = '',
 }:ICrypto) {
   const dispatch = useDispatch();
   const clickHandler = useCallback(() => dispatch(actionChangeCrypto(name)), []);
@@ -18,15 +18,15 @@ export function CryptoCard({
       <List type="unstyled" className="list-inner">
         <li className="list-item">
           <span>USD:</span>
-          <span className="text-start">{toUSD}</span>
+          <span className="text-start">{USD}</span>
         </li>
         <li>
           <span>UAH:</span>
-          <span className="text-start">{toUAH}</span>
+          <span className="text-start">{UAH}</span>
         </li>
         <li>
           <span>EUR:</span>
-          <span className="text-start">{toEUR}</span>
+          <span className="text-start">{EUR}</span>
         </li>
       </List>
     </Card>

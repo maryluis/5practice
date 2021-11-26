@@ -6,24 +6,30 @@ import {
 } from 'reactstrap';
 import { RootStateOrAny, useSelector, useDispatch } from 'react-redux';
 import { actionChangeCurrency } from '../redux-saga/actionCreators';
+import { getExchangeData } from '../tools';
 
 export function InputWrapper() {
-  const buttonsName = ['UAH', 'USD', 'EUR'];
+  const buttonsName = ['USD', 'UAH', 'EUR'];
   const [inputValue, changeValue] = useState(0);
   const cryptoType:string = useSelector((state: RootStateOrAny) => {
     return state.actualCoin.actualCryptoName;
   });
+  const currencyType:string = useSelector((state: RootStateOrAny) => {
+    return state.actualCurrency.actualCurrencyName;
+  });
+  const count:any = useSelector((state : RootStateOrAny) => {
+    return state.actualData.data[cryptoType][currencyType];
+  });
+
   const dispatch = useDispatch();
   const handleClick = useCallback((e) => {
     dispatch(actionChangeCurrency(e.target.name));
   }, []);
   const handlerInput = useCallback((e) => {
+    getExchangeData();
     changeValue(e.target.value);
   }, []);
-  const currencyType:string = useSelector((state: RootStateOrAny) => {
-    return state.actualCurrency.actualCurrencyName;
-  });
-  const count:number = 7.0231;
+
   const exchanged = useMemo(() => {
     const result = Math.round(((inputValue * count) + Number.EPSILON) * 100) / 100;
     return result;
