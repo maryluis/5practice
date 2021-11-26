@@ -4,19 +4,26 @@ import {
 import {
   FormGroup, Label, Col, Input, Button,
 } from 'reactstrap';
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector, useDispatch } from 'react-redux';
+import { actionChangeCurrency } from '../redux-saga/actionCreators';
 
 export function InputWrapper() {
+  const buttonsName = ['UAH', 'USD', 'EUR'];
+  const [inputValue, changeValue] = useState(0);
   const cryptoType:string = useSelector((state: RootStateOrAny) => {
     return state.actualCoin.actualCryptoName;
   });
-  const to:string = 'UAH';
-  const checked:boolean = false;
-  const count:number = 7.0231;
-  const [inputValue, changeValue] = useState(0);
+  const dispatch = useDispatch();
+  const handleClick = useCallback((e) => {
+    dispatch(actionChangeCurrency(e.target.name));
+  }, []);
   const handlerInput = useCallback((e) => {
     changeValue(e.target.value);
   }, []);
+  const currencyType:string = useSelector((state: RootStateOrAny) => {
+    return state.actualCurrency.actualCurrencyName;
+  });
+  const count:number = 7.0231;
   const exchanged = useMemo(() => {
     const result = Math.round(((inputValue * count) + Number.EPSILON) * 100) / 100;
     return result;
@@ -45,30 +52,18 @@ export function InputWrapper() {
           />
         </Col>
       </FormGroup>
-      <span className="button-form">
-        <Button
-          color="success"
-          outline={checked}
-        >
-          UAH
-        </Button>
-      </span>
-      <span className="button-form">
-        <Button
-          color="success"
-          outline
-        >
-          USD
-        </Button>
-      </span>
-      <span className="button-form">
-        <Button
-          color="success"
-          outline
-        >
-          EUR
-        </Button>
-      </span>
+      {buttonsName.map((el) => (
+        <span key={el} className="button-form">
+          <Button
+            color="success"
+            onClick={handleClick}
+            outline={currencyType !== el}
+            name={el}
+          >
+            {el}
+          </Button>
+        </span>
+      ))}
       <h3 className="result">
         {inputValue || '0'}
         {' '}
@@ -81,7 +76,7 @@ export function InputWrapper() {
         {' '}
         in
         {' '}
-        {to}
+        {currencyType}
       </h3>
     </div>
   );
