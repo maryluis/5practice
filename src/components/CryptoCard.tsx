@@ -10,7 +10,7 @@ export function CryptoCard({
   const dispatch = useDispatch();
   const clickHandler = useCallback(() => dispatch(actionChangeCrypto(name)), []);
   return (
-    <Card onClick={clickHandler} className="flex-row">
+    <Card onClick={clickHandler} className="flex-row data-inner">
       {name !== 'undefined'
         ? (
           <React.Fragment>
@@ -20,15 +20,15 @@ export function CryptoCard({
             </div>
             <List type="unstyled" className="list-inner">
               <li className="list-item">
-                <span>USD:</span>
+                <span><strong>USD:</strong></span>
                 <span className="text-start">{USD}</span>
               </li>
               <li>
-                <span>UAH:</span>
+                <span><strong>UAH:</strong></span>
                 <span className="text-start">{UAH}</span>
               </li>
               <li>
-                <span>EUR:</span>
+                <span><strong>EUR:</strong></span>
                 <span className="text-start">{EUR}</span>
               </li>
             </List>

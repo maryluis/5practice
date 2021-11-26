@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #00092a;
+  background-color: #06162E;
   min-height: 100vh;
   padding-top: 100px;
   display: flex;
@@ -15,15 +15,15 @@
 }
 .flex-row { 
   display: flex;
-  background-color: #00092a;
+  background-color: #06162E;
 }
 .card { 
   width: 250px;
   height: 150px;
-  background-color: #003a2a;
+  background-color: #0D2F52;
   justify-content: space-between;
   margin: 10px;
-  color: #00b1cb
+  color: #78A5EA
 }
 .list-inner {
   position: relative;
@@ -48,21 +48,30 @@
   top: 30px;
   left: 20px;
 }
+.card {
+  border-radius: 0%;
+}
 .card-inner {
    width: 100%;
    justify-content: center;
 }
 .input-wrapper {
-  color: #00b1a1;
+  color: #78A5EA;
   position: absolute;
   top: 300px;
   width: 90%;
+}
+input#type.form-control {
+  border-radius: 0%;
+  background-color: #06162E;
+  border-color: #0D2F52;
+  color:#78A5EA;
 }
 .input-wrapper label {
   font-size: 25px;
   position: relative;
   top: -10px;
-  color: #198754;
+  color: #86C551;
 }
 .input-wrapper h3 {
   text-align: center;
@@ -72,11 +81,45 @@
 .button-form {
   margin: 5px;
 }
+.btn-outline-success {
+  border-radius: 0%;
+  background-color: #0D2F52;
+  color: #86C551;
+  border-color: #86C551;
+}
+.btn-success{
+  border-radius: 0%;
+  background-color: #86C551;
+  border-color: #86C551;
+  color:#0D2F52;
+}
+.data-inner:hover {
+  transform: scale(1.05);
+  transition: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+.btn-success:focus {
+  border-radius: 0%;
+  color:#0D2F52;
+  background-color: #86C551;
+  border-color: #86C551;
+}
+.btn-outline-success:hover {
+  border-radius: 0%;
+  color:#0D2F52;
+  background-color: #86C551;
+  border-color: #86C551;
+}
+.btn-success:hover {
+  border-radius: 0%;
+  color:#0D2F52;
+  background-color: #86C551;
+  border-color: #86C551;
+}
 .button-checked {
   background-color: #003a2a;
 }
 .result {
-  color: #198754;;
+  color: #86C551;
 }
 .cripto-card-logo-inner {
   display: flex;
@@ -87,7 +130,7 @@
 .cripto-card-logo-inner div {
   position: relative;
   left: 20px;
-  color:#198754
+  color:#86C551
 }
 .loader {
   width: 100px;
@@ -95,7 +138,7 @@
 }
 @media screen and (max-width: 800px) {
   html {
-    background-color: #00092a;
+    background-color: #06162E
   }
   .card-inner {
     display: flex;
