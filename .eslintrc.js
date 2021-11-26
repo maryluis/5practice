@@ -30,5 +30,6 @@ module.exports = {
     'react/function-component-definition': 0,
     'import/prefer-default-export': 0,
     'no-debugger': 0,
+    'arrow-body-style': 0,
   },
 };

@@ -72,6 +72,17 @@
 .result {
   color: #198754;;
 }
+.cripto-card-logo-inner {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: space-between;
+}
+.cripto-card-logo-inner div {
+  position: relative;
+  left: 20px;
+  color:#198754
+}
 /* .input-inner {
   display: flex;
   justify-content: center;

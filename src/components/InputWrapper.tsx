@@ -4,9 +4,12 @@ import {
 import {
   FormGroup, Label, Col, Input, Button,
 } from 'reactstrap';
+import { RootStateOrAny, useSelector } from 'react-redux';
 
 export function InputWrapper() {
-  const type:string = 'ETH';
+  const cryptoType:string = useSelector((state: RootStateOrAny) => {
+    return state.actualCoin.actualCryptoName;
+  });
   const to:string = 'UAH';
   const checked:boolean = false;
   const count:number = 7.0231;
@@ -23,7 +26,7 @@ export function InputWrapper() {
       <h3>
         Selected coin:
         {' '}
-        {type}
+        {cryptoType}
       </h3>
       <FormGroup className="input-inner" row>
         <Label
@@ -69,7 +72,7 @@ export function InputWrapper() {
       <h3 className="result">
         {inputValue || '0'}
         {' '}
-        {type}
+        {cryptoType}
         {' '}
         {' '}
         will be a

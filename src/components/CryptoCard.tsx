@@ -1,12 +1,20 @@
 import { Card, List } from 'reactstrap';
-import { Crypto } from '../interfaces';
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import { ICrypto } from '../interfaces';
+import { actionChangeCrypto } from '../redux-saga/actionCreators';
 
 export function CryptoCard({
-  icon, toUSD, toUAH, toEUR,
-}:Crypto) {
+  icon, toUSD, toUAH, toEUR, name = '',
+}:ICrypto) {
+  const dispatch = useDispatch();
+  const clickHandler = useCallback(() => dispatch(actionChangeCrypto(name)), []);
   return (
-    <Card className="flex-row">
-      <div><img src={icon} alt="criptoLogo" /></div>
+    <Card onClick={clickHandler} className="flex-row">
+      <div className="cripto-card-logo-inner">
+        <img src={icon} alt="criptoLogo" />
+        <div>{name}</div>
+      </div>
       <List type="unstyled" className="list-inner">
         <li className="list-item">
           <span>USD:</span>

@@ -1,8 +1,8 @@
-import { Crypto } from '../interfaces';
+import { ICrypto } from '../interfaces';
 import { CryptoCard } from './CryptoCard';
 
 export function CryptoWrapper() {
-  const data:Array<Crypto> = [
+  const data:Array<ICrypto> = [
     {
       name: 'BTC',
       toUAH: 150000,
@@ -28,7 +28,16 @@ export function CryptoWrapper() {
     <div className="flex-row card-inner">
       {data.map(({
         name, toUSD, toEUR, toUAH, icon,
-      }) => <CryptoCard key={name} toUSD={toUSD} toEUR={toEUR} toUAH={toUAH} icon={icon} />)}
+      }) => (
+        <CryptoCard
+          key={name}
+          toUSD={toUSD}
+          toEUR={toEUR}
+          toUAH={toUAH}
+          icon={icon}
+          name={name}
+        />
+      ))}
     </div>
   );
 }

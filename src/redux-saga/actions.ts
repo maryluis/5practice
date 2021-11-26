@@ -1,0 +1,1 @@
+export const CHANGE_CRYPTO_NAME:string = 'CHANGE_CRYPTO_NAME';
