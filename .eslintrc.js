@@ -31,5 +31,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-debugger': 0,
     'arrow-body-style': 0,
+    'react/jsx-fragments': 0,
   },
 };

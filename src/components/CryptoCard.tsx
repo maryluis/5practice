@@ -1,6 +1,6 @@
 import { Card, List } from 'reactstrap';
 import { useDispatch } from 'react-redux';
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { ICrypto } from '../interfaces';
 import { actionChangeCrypto } from '../redux-saga/actionCreators';
 
