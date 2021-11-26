@@ -105,8 +105,8 @@ input#type.form-control {
 }
 .btn-outline-success:hover {
   border-radius: 0%;
-  color:#0D2F52;
-  background-color: #86C551;
+  background-color: #0D2F52;
+  color: #86C551;
   border-color: #86C551;
 }
 .btn-success:hover {
