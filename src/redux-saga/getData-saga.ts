@@ -1,11 +1,15 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { GET_DATA } from './actions';
 import { getExchangeData } from '../tools';
-import { actionPutData } from './actionCreators';
+import { actionGotError, actionPutData } from './actionCreators';
 
 function* getDataWorker():Generator {
-  const data:any = yield call(() => getExchangeData());
-  yield put(actionPutData(data));
+  try {
+    const data:any = yield call(() => getExchangeData());
+    yield put(actionPutData(data));
+  } catch (e:any) {
+    yield put(actionGotError(e.message));
+  }
 }
 function* getDataWatcher() {
   yield takeEvery(GET_DATA, getDataWorker);

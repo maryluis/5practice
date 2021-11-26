@@ -11,12 +11,12 @@ export function CryptoWrapper() {
   });
   const dispatch = useDispatch();
   useEffect(():any => dispatch(actionGetData()), []);
-  const isLoading = useSelector((state: RootStateOrAny) => {
-    return state.actualData.loading;
+  const { loading, error } = useSelector((state: RootStateOrAny) => {
+    return state.actualData;
   });
   return (
     <div className="flex-row card-inner">
-      {!isLoading ? data.map(({
+      {!loading && !error && data.map(({
         name, USD, EUR, UAH, icon,
       }) => (
         <CryptoCard
@@ -27,7 +27,9 @@ export function CryptoWrapper() {
           icon={icon}
           name={name}
         />
-      )) : <Spinner className="loader" type="grow" />}
+      ))}
+      {loading && <Spinner className="loader" type="grow" />}
+      {!loading && error && <h3 className="result">{error}</h3>}
     </div>
   );
 }

@@ -11,24 +11,30 @@ export function CryptoCard({
   const clickHandler = useCallback(() => dispatch(actionChangeCrypto(name)), []);
   return (
     <Card onClick={clickHandler} className="flex-row">
-      <div className="cripto-card-logo-inner">
-        <img src={icon} alt="criptoLogo" />
-        <div>{name}</div>
-      </div>
-      <List type="unstyled" className="list-inner">
-        <li className="list-item">
-          <span>USD:</span>
-          <span className="text-start">{USD}</span>
-        </li>
-        <li>
-          <span>UAH:</span>
-          <span className="text-start">{UAH}</span>
-        </li>
-        <li>
-          <span>EUR:</span>
-          <span className="text-start">{EUR}</span>
-        </li>
-      </List>
+      {name !== 'undefined'
+        ? (
+          <>
+            <div className="cripto-card-logo-inner">
+              <img src={icon} alt="criptoLogo" />
+              <div>{name}</div>
+            </div>
+            <List type="unstyled" className="list-inner">
+              <li className="list-item">
+                <span>USD:</span>
+                <span className="text-start">{USD}</span>
+              </li>
+              <li>
+                <span>UAH:</span>
+                <span className="text-start">{UAH}</span>
+              </li>
+              <li>
+                <span>EUR:</span>
+                <span className="text-start">{EUR}</span>
+              </li>
+            </List>
+          </>
+        )
+        : <h3>Ops. something is wrong</h3>}
     </Card>
   );
 }

@@ -1,5 +1,5 @@
 import {
-  CHANGE_CRYPTO_NAME, CHANGE_CURRENCY_NAME, GET_DATA, PUT_DATA,
+  CHANGE_CRYPTO_NAME, CHANGE_CURRENCY_NAME, GET_DATA, GOT_ERROR, PUT_DATA,
 } from './actions';
 
 export const actionChangeCrypto = (payload:string) => ({
@@ -18,5 +18,10 @@ export const actionGetData = () => ({
 
 export const actionPutData = (payload:object) => ({
   type: PUT_DATA,
+  payload,
+});
+
+export const actionGotError = (payload:string) => ({
+  type: GOT_ERROR,
   payload,
 });
