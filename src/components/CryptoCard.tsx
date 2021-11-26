@@ -13,7 +13,7 @@ export function CryptoCard({
     <Card onClick={clickHandler} className="flex-row">
       {name !== 'undefined'
         ? (
-          <>
+          <React.Fragment>
             <div className="cripto-card-logo-inner">
               <img src={icon} alt="criptoLogo" />
               <div>{name}</div>
@@ -32,7 +32,7 @@ export function CryptoCard({
                 <span className="text-start">{EUR}</span>
               </li>
             </List>
-          </>
+          </React.Fragment>
         )
         : <h3>Ops. something is wrong</h3>}
     </Card>
