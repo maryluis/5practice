@@ -70,7 +70,7 @@ export function InputWrapper() {
           </Button>
         </span>
       ))}
-      <h3 className="result">
+      <h3 className="result bottom-result">
         {inputValue || '0'}
         {' '}
         {cryptoType}

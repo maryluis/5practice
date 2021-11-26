@@ -54,6 +54,8 @@
 }
 .input-wrapper {
   color: #00b1a1;
+  position: absolute;
+  top: 300px;
   width: 90%;
 }
 .input-wrapper label {
@@ -96,15 +98,30 @@
   justify-content: center;
 } */
 @media screen and (max-width: 800px) {
+  html {
+    background-color: #00092a;
+  }
   .card-inner {
     display: flex;
     width: 300px;
     flex-wrap: wrap;
+    position: absolute;
+    top: 250px;
+  }
+  .input-wrapper {
+    top: 0;
   }
 }
 @media screen and (max-width: 575px) {
   .input-wrapper label {
     display: none;
     visibility: hidden;
+  }
+  .input-wrapper .bottom-result {
+    font-size: 16px;
+    width: 90%;
+  }
+  .card-inner {
+    top: 200px;
   }
 }
