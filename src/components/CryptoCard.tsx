@@ -15,7 +15,7 @@ export function CryptoCard({
         ? (
           <React.Fragment>
             <div className="cripto-card-logo-inner">
-              <img src={icon} alt="criptoLogo" />
+              <img width="72" height="72" src={icon} alt="criptoLogo" />
               <div>{name}</div>
             </div>
             <List type="unstyled" className="list-inner">

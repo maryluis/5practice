@@ -29,7 +29,6 @@ export function InputWrapper() {
     getExchangeData();
     changeValue(e.target.value);
   }, []);
-
   const exchanged = useMemo(() => {
     const result = Math.round(((inputValue * count) + Number.EPSILON) * 100) / 100;
     return result;
